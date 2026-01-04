@@ -6,6 +6,7 @@ export const About = () => {
   const aboutRef = useRef(null);
 
   useEffect(() => {
+    const element = aboutRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -15,13 +16,13 @@ export const About = () => {
       { threshold: 0.1 }
     );
 
-    if (aboutRef.current) {
-      observer.observe(aboutRef.current);
+    if (element) {
+      observer.observe(element);
     }
 
     return () => {
-      if (aboutRef.current) {
-        observer.unobserve(aboutRef.current);
+      if (element) {
+        observer.unobserve(element);
       }
     };
   }, []);

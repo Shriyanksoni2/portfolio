@@ -18,6 +18,7 @@ export const Contact = () => {
   const [status, setStatus] = useState({});
 
   useEffect(() => {
+    const element = contactRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -27,13 +28,13 @@ export const Contact = () => {
       { threshold: 0.1 }
     );
 
-    if (contactRef.current) {
-      observer.observe(contactRef.current);
+    if (element) {
+      observer.observe(element);
     }
 
     return () => {
-      if (contactRef.current) {
-        observer.unobserve(contactRef.current);
+      if (element) {
+        observer.unobserve(element);
       }
     };
   }, []);

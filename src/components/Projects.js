@@ -9,6 +9,7 @@ export const Projects = () => {
   const projectsRef = useRef(null);
 
   useEffect(() => {
+    const element = projectsRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -18,13 +19,13 @@ export const Projects = () => {
       { threshold: 0.1 }
     );
 
-    if (projectsRef.current) {
-      observer.observe(projectsRef.current);
+    if (element) {
+      observer.observe(element);
     }
 
     return () => {
-      if (projectsRef.current) {
-        observer.unobserve(projectsRef.current);
+      if (element) {
+        observer.unobserve(element);
       }
     };
   }, []);

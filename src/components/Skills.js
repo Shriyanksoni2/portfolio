@@ -8,6 +8,7 @@ export const Skills = () => {
   const skillsRef = useRef(null);
 
   useEffect(() => {
+    const element = skillsRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -17,13 +18,13 @@ export const Skills = () => {
       { threshold: 0.1 }
     );
 
-    if (skillsRef.current) {
-      observer.observe(skillsRef.current);
+    if (element) {
+      observer.observe(element);
     }
 
     return () => {
-      if (skillsRef.current) {
-        observer.unobserve(skillsRef.current);
+      if (element) {
+        observer.unobserve(element);
       }
     };
   }, []);
